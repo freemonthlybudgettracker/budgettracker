@@ -109,18 +109,18 @@
     .hero{
       background:
         radial-gradient(120% 80% at 50% 0%, #4A2C1A 0%, #3B2314 55%, #2A180D 100%);
-      color:var(--cream);padding:48px 0 56px;overflow:hidden;
+      color:var(--cream);padding:40px 0 56px;overflow:hidden;
     }
     .hero-layout{
       max-width:1200px;margin:0 auto;padding:0 20px;
       display:flex;justify-content:center;align-items:flex-start;gap:24px;
     }
     .hero-center{
-      flex:1;max-width:680px;display:flex;flex-direction:column;align-items:center;
+      flex:1;max-width:640px;display:flex;flex-direction:column;align-items:center;
     }
     
     /* ================= HERO TEXT ================= */
-    .hero-copy{text-align:center;margin-bottom:36px;width:100%}
+    .hero-copy{text-align:center;margin-bottom:32px;width:100%}
     .hero-badge{
       display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;
       font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
@@ -148,30 +148,55 @@
     }
 
     .tool-card{
-      background:var(--cream-2);color:var(--ink);border-radius:18px;
-      padding:20px;border:1px solid rgba(59,35,20,.1);
-      box-shadow:0 40px 80px -40px rgba(0,0,0,.75), 0 10px 24px -14px rgba(0,0,0,.4);
-      scroll-margin-top:88px;
-      width:100%;max-width:600px;
+      background:transparent;
+      border:none;
+      box-shadow:none;
+      padding:0;
+      display:flex;flex-direction:column;align-items:center;
+      scroll-margin-top:88px;width:100%;
     }
-    @media(min-width:560px){ .tool-card{padding:24px} }
-    .tool-head{display:flex;align-items:center;justify-content:flex-start;gap:12px;margin-bottom:16px}
-    .tool-title{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--brown);margin:0}
     
-    /* Adjusted Frame CSS */
-    .embed-frame{
-      width:100%;
-      border:0;
-      border-radius:14px;
-      background:#fff;
-      display:block;
-      height: 520px;
+    .tool-head{
+      display:flex;align-items:center;justify-content:center;
+      margin-bottom:16px;width:100%;
     }
-    @media(max-width:560px){
-      .embed-frame{
-        height: 620px;
-        border-radius:10px;
-      }
+    .tool-title{
+      font-family:var(--serif);font-size:1.1rem;font-weight:700;
+      color:var(--cream);margin:0;text-align:center;
+    }
+
+    /* ================= PHONE MOCKUP ================= */
+    .phone-mock{
+      position:relative;
+      width:100%;
+      max-width:340px; /* Smaller width */
+      height:520px;    /* Shorter height to minimize scrolling */
+      background:#1a120d;
+      border:10px solid #1a120d;
+      border-radius:42px;
+      box-shadow:0 30px 60px -20px rgba(0,0,0,0.8), 0 10px 20px rgba(0,0,0,0.4);
+      overflow:hidden;
+      isolation:isolate;
+      margin:0 auto;
+    }
+    .phone-mock::before{
+      content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+      width:100px;height:22px;background:#1a120d;border-radius:0 0 16px 16px;
+      z-index:10;pointer-events:none;
+    }
+    .phone-mock::after{
+      content:"";position:absolute;bottom:8px;left:50%;transform:translateX(-50%);
+      width:110px;height:4px;background:rgba(255,255,255,0.3);border-radius:999px;
+      z-index:10;pointer-events:none;
+    }
+    
+    .embed-frame{
+      display:block;
+      width:100%;
+      height:100%;
+      border:0;
+      background:#fff;
+      border-radius:32px; /* Match inner curve */
     }
 
     /* ================= TRUST BAR ================= */
@@ -372,23 +397,28 @@
             </p>
           </div>
 
-          <!-- Embedded Tool -->
+          <!-- Embedded Tool in Mobile Frame -->
           <div class="tool-card" id="tracker" aria-labelledby="toolTitle">
+            
             <div class="tool-head">
               <p class="tool-title" id="toolTitle">Interactive Budget Tracker (USD)</p>
             </div>
-            <iframe
-              src="https://budgetapptracker.blogspot.com/"
-              width="100%"
-              name="myiFrame"
-              scrolling="yes"
-              style="border: none"
-              loading="lazy"
-              allowfullscreen
-              title="Interactive monthly budget tracker"
-              class="embed-frame"
-              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-downloads">
-            </iframe>
+            
+            <div class="phone-mock">
+              <iframe
+                src="https://budgetapptracker.blogspot.com/"
+                width="100%"
+                name="myiFrame"
+                scrolling="yes"
+                style="border: none"
+                loading="lazy"
+                allowfullscreen
+                title="Interactive monthly budget tracker"
+                class="embed-frame"
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-downloads">
+              </iframe>
+            </div>
+            
           </div>
 
         </div>
